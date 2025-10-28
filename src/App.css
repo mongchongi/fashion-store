@@ -1,0 +1,116 @@
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding: 16px;
+}
+
+.nav__sign-in-button {
+  display: block;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.nav__logo-image {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.nav__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__controls::before {
+  content: '';
+  display: block;
+  width: 20%;
+}
+
+.nav__menu {
+  width: 60%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+}
+
+.nav__search {
+  width: 250px;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  margin-left: auto;
+}
+
+.nav__search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.product {
+  position: relative;
+  flex: 0 0 calc((100% - (16px * 3)) / 4);
+}
+
+.product__badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: block;
+  padding: 5px 8px;
+  background: rgba(130, 160, 170, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.product__image {
+  width: 100%;
+  display: block;
+}
+
+@media all and (max-width: 882px) {
+  .product {
+    flex: 0 0 calc((100% - (16px * 2)) / 3);
+  }
+}
+
+@media all and (max-width: 845px) {
+  .nav__controls {
+    flex-direction: column;
+  }
+
+  .nav__menu {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .product {
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+}
+
+@media all and (max-width: 457px) {
+  .nav__search {
+    width: 150px;
+  }
+
+  .product {
+    flex: 0 0 100%;
+  }
+}
