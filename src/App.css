@@ -14,10 +14,14 @@ button {
   padding: 0;
 }
 
+.nav__logo {
+  display: flex;
+  justify-content: center;
+}
+
 .nav__logo-image {
   width: 100px;
   display: block;
-  margin: 0 auto;
 }
 
 .nav__controls {
