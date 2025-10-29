@@ -42,6 +42,7 @@ button {
 
 .nav__sign-in {
   display: block;
+  color: rgba(0, 0, 0, 1);
   width: 62px;
   text-decoration: none;
   margin-left: auto;
