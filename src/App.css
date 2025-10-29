@@ -34,6 +34,7 @@ button {
 }
 
 .nav__menu-toggle {
+  color: rgba(0, 0, 0, 1);
   position: absolute;
   border: none;
   background: transparent;
