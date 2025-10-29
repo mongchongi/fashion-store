@@ -15,13 +15,9 @@ const ProductDetailPage = () => {
   const getProductDetail = async () => {
     const url = `https://my-json-server.typicode.com/mongchongi/fashion-store/products/${id}`;
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setProduct(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await fetch(url);
+    const data = await response.json();
+    setProduct(data);
   };
 
   const handleShowDropdown = () => {

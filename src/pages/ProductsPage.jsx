@@ -12,13 +12,9 @@ const ProductsPage = ({ isLoggedIn }) => {
       ? `https://my-json-server.typicode.com/mongchongi/fashion-store/products?q=${searchQuery}`
       : 'https://my-json-server.typicode.com/mongchongi/fashion-store/products';
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await fetch(url);
+    const data = await response.json();
+    setProducts(data);
   };
 
   useEffect(() => {
@@ -27,9 +23,17 @@ const ProductsPage = ({ isLoggedIn }) => {
 
   return (
     <div className='product-list'>
-      {products.map((product) => (
-        <Product key={product.id} product={product} isLoggedIn={isLoggedIn} />
-      ))}
+      {products.length === 0 ? (
+        <>
+          <p style={{ margin: '16px auto 0' }}>'{query.get('q')}'에 대한 검색 결과가 없습니다.</p>
+        </>
+      ) : (
+        <>
+          {products.map((product) => (
+            <Product key={product.id} product={product} isLoggedIn={isLoggedIn} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
