@@ -1,9 +1,11 @@
 import './App.css';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useLocation } from 'react-router';
 import ProductsPage from './pages/ProductsPage';
 import SignInPage from './pages/SignInPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import Navbar from './components/Navbar';
+import { useState } from 'react';
+import PrivateRoute from './route/PrivateRoute';
 
 // 2. 전체 상품 페이지에서는 전체 상품 목록 볼 수 있다
 // 3. 로그인 버튼을 누르면 로그인 페이지로 이동
@@ -15,13 +17,17 @@ import Navbar from './components/Navbar';
 // 9. 상품을 검색할 수 있다
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const location = useLocation();
+
   return (
     <div className='container'>
-      <Navbar />
+      {location.pathname !== '/sign-in' && <Navbar />}
       <Routes>
-        <Route path='/' element={<ProductsPage />} />
-        <Route path='/products/:id' element={<ProductDetailPage />} />
-        <Route path='/sign-in' element={<SignInPage />} />
+        <Route path='/' element={<ProductsPage isLoggedIn={isLoggedIn} />} />
+        <Route path='/products/:id' element={<PrivateRoute isLoggedIn={isLoggedIn} />} />
+        <Route path='/sign-in' element={<SignInPage setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
     </div>
   );

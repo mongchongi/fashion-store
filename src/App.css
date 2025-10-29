@@ -6,12 +6,49 @@ button {
   padding: 16px;
 }
 
-.nav__sign-in-button {
-  display: block;
-  margin-left: auto;
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.side-menu__list {
+  list-style: none;
+  background: rgba(255, 255, 255, 1);
+  width: 50%;
+  height: 100vh;
+  padding: 16px;
+  margin: 0;
+}
+
+.side-menu__item {
+  padding: 8px;
+}
+
+.nav {
+  position: relative;
+}
+
+.nav__menu-toggle {
+  position: absolute;
   border: none;
   background: transparent;
   padding: 0;
+}
+
+.nav__sign-in {
+  display: block;
+  width: 62px;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.nav__sign-in:visited {
+  color: rgba(0, 0, 0, 1);
 }
 
 .nav__logo {
@@ -70,9 +107,15 @@ button {
 .product {
   position: relative;
   flex: 0 0 calc((100% - (16px * 3)) / 4);
+  transition: transform 0.5s;
 }
 
-.product__badge {
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product__badge,
+.product-detail__badge {
   position: absolute;
   top: 8px;
   left: 8px;
@@ -85,6 +128,140 @@ button {
 .product__image {
   width: 100%;
   display: block;
+}
+
+.sign-in {
+  height: calc(100vh - 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.sign-in__logo {
+  width: 150px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.sign-in__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 425px;
+}
+
+.sign-in__label {
+  font-weight: bold;
+}
+
+.sign-in__input {
+  width: 100%;
+  outline: none;
+  padding: 5px;
+}
+
+.sign-in__password {
+  position: relative;
+}
+
+.sign-in__input--password {
+  padding-right: 34px;
+}
+
+.sign-in__password-toggle {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.sign-in__button {
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  margin-top: 24px;
+  padding: 7px;
+  font-weight: bold;
+}
+
+.sign-in__button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.product-detail {
+  width: 850px;
+  display: flex;
+  justify-content: center;
+  margin: 16px auto 0;
+  gap: 24px;
+  position: relative;
+}
+
+.product-detail__image {
+  width: 400px;
+  display: block;
+}
+
+.product-detail__info {
+  width: 100%;
+}
+
+.product-detail__title {
+  font-size: 32px;
+  margin: 0;
+}
+
+.product-detail__price {
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+.product-detail__size-dropdown {
+  width: 200px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.product-detail__size-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px;
+}
+
+.product-detail__size-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-detail__size-item {
+  padding: 8px;
+}
+
+.product-detail__size-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.product-detail__buy-button {
+  width: 200px;
+  margin-top: 24px;
+  padding: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.product-detail__buy-button:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media all and (max-width: 882px) {
@@ -101,6 +278,15 @@ button {
   .nav__menu {
     width: 100%;
   }
+
+  .product-detail {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .product-detail__image {
+    width: 100%;
+  }
 }
 
 @media all and (max-width: 670px) {
@@ -112,9 +298,14 @@ button {
 @media all and (max-width: 457px) {
   .nav__search {
     width: 150px;
+    margin-top: 16px;
   }
 
   .product {
     flex: 0 0 100%;
+  }
+
+  .sign-in__input-group {
+    width: 100%;
   }
 }
