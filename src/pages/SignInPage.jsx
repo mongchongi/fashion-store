@@ -20,7 +20,7 @@ const SignInPage = ({ setIsLoggedIn }) => {
       alert('비밀번호를 입력하세요.');
     } else {
       setIsLoggedIn(true);
-      navigate('/');
+      navigate('/?q=');
     }
   };
 
@@ -40,7 +40,7 @@ const SignInPage = ({ setIsLoggedIn }) => {
 
   return (
     <form className='sign-in' onSubmit={handleSignIn}>
-      <Link to={'/'}>
+      <Link to={'/?q='}>
         <img className='sign-in__logo' src={`${import.meta.env.BASE_URL}fashion-store.svg`} alt='fashion store logo' />
       </Link>
       <div className='sign-in__input-group'>

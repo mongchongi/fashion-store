@@ -1,11 +1,13 @@
 import { faBars, faMagnifyingGlass, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showSideMenu, setShowSideMenu] = useState(false);
+
+  const navigate = useNavigate();
 
   const menus = ['여성', 'Divided', '남성', '신생아/유아', 'Sale', '지속가능성'];
 
@@ -17,6 +19,17 @@ const Navbar = () => {
 
   const handleToggleSideMenu = () => {
     setShowSideMenu(!showSideMenu);
+  };
+
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      const keyword = e.target.value;
+      navigate(`/?q=${keyword}`);
+
+      setTimeout(() => {
+        e.target.value = '';
+      }, 0);
+    }
   };
 
   useEffect(() => {
@@ -50,12 +63,19 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faBars} />
           </button>
         )}
-        <Link className='nav__sign-in' to={'/sign-in'}>
-          로그인
-          <FontAwesomeIcon icon={faRightToBracket} />
-        </Link>
+        {isLoggedIn ? (
+          <button className='nav__sign-in nav__sign-in--out' to={'/sign-in'} onClick={() => setIsLoggedIn(false)}>
+            로그아웃
+            <FontAwesomeIcon icon={faRightToBracket} />
+          </button>
+        ) : (
+          <Link className='nav__sign-in nav__sign-in--in' to={'/sign-in'}>
+            로그인
+            <FontAwesomeIcon icon={faRightToBracket} />
+          </Link>
+        )}
         <div className='nav__logo'>
-          <Link to={'/'}>
+          <Link to={'/?q='}>
             <img
               className='nav__logo-image'
               src={`${import.meta.env.BASE_URL}fashion-store.svg`}
@@ -75,7 +95,7 @@ const Navbar = () => {
           )}
           <div className='nav__search'>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <input className='nav__search-input' type='text' />
+            <input className='nav__search-input' type='text' onKeyDown={handleSearch} />
           </div>
         </div>
       </div>

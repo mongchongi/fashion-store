@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div className='container'>
-      {location.pathname !== '/sign-in' && <Navbar />}
+      {location.pathname !== '/sign-in' && <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
       <Routes>
         <Route path='/' element={<ProductsPage isLoggedIn={isLoggedIn} />} />
         <Route path='/products/:id' element={<PrivateRoute isLoggedIn={isLoggedIn} />} />

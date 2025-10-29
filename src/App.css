@@ -44,9 +44,19 @@ button {
 .nav__sign-in {
   display: block;
   color: rgba(0, 0, 0, 1);
-  width: 62px;
   text-decoration: none;
   margin-left: auto;
+}
+
+.nav__sign-in--in {
+  width: 62px;
+}
+
+.nav__sign-in--out {
+  width: 76px;
+  border: none;
+  background: transparent;
+  padding: 0;
 }
 
 .nav__sign-in:visited {
