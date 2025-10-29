@@ -75,7 +75,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           </Link>
         )}
         <div className='nav__logo'>
-          <Link to={'/?q='}>
+          <Link to={'/'}>
             <img
               className='nav__logo-image'
               src={`${import.meta.env.BASE_URL}fashion-store.svg`}

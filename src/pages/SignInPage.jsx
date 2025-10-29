@@ -20,7 +20,7 @@ const SignInPage = ({ setIsLoggedIn }) => {
       alert('비밀번호를 입력하세요.');
     } else {
       setIsLoggedIn(true);
-      navigate('/?q=');
+      navigate('/');
     }
   };
 

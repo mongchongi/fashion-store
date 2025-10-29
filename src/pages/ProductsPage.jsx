@@ -8,7 +8,9 @@ const ProductsPage = ({ isLoggedIn }) => {
 
   const getProducts = async () => {
     const searchQuery = query.get('q');
-    const url = `https://my-json-server.typicode.com/mongchongi/fashion-store/products?q=${searchQuery}`;
+    const url = searchQuery
+      ? `https://my-json-server.typicode.com/mongchongi/fashion-store/products?q=${searchQuery}`
+      : 'https://my-json-server.typicode.com/mongchongi/fashion-store/products';
 
     try {
       const response = await fetch(url);
