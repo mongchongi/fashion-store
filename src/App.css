@@ -236,6 +236,7 @@ button {
   border: none;
   background: transparent;
   padding: 8px;
+  color: rgba(0, 0, 0, 1);
 }
 
 .product-detail__size-list {
